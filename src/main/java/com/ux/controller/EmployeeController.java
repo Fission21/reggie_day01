@@ -90,14 +90,14 @@ public class EmployeeController {
         // 设置初始密码 123456，需要进行md5 加密
         employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
         // 记录创建时间
-        employee.setCreateTime(LocalDateTime.now());
+        // employee.setCreateTime(LocalDateTime.now());
         // 更新时间
-        employee.setUpdateTime(LocalDateTime.now());
+        // employee.setUpdateTime(LocalDateTime.now());
         // 创建人  获取当前登录用的id
-        Long id = (Long) httpServletRequest.getSession().getAttribute("employee");
-        employee.setCreateUser(id);
+        // Long id = (Long) httpServletRequest.getSession().getAttribute("employee");
+        // employee.setCreateUser(id);
         // 更新人
-        employee.setUpdateUser(id);
+        // employee.setUpdateUser(id);
         employeeService.save(employee);
         return R.success("新增员工成功");
     }
@@ -133,10 +133,12 @@ public class EmployeeController {
      */
     @PutMapping
     public R<String> update(HttpServletRequest httpServletRequest, @RequestBody Employee employee){
-        log.info(employee.toString());
-        Long employee1 = (Long) httpServletRequest.getSession().getAttribute("employee");
-        employee.setUpdateUser(employee1);
-        employee.setUpdateTime(LocalDateTime.now());
+        // log.info(employee.toString());
+        // Long employee1 = (Long) httpServletRequest.getSession().getAttribute("employee");
+        // employee.setUpdateUser(employee1);
+        // employee.setUpdateTime(LocalDateTime.now());
+        Long threadId = Thread.currentThread().getId();
+        log.info("线程ID,{}",threadId);
         employeeService.updateById(employee);
         return R.success("员工信息修改成功");
     }

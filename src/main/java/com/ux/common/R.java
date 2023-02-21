@@ -3,12 +3,12 @@ package com.ux.common;
 import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * 通用返回结果类，服务端响应的数据最终都会封装成此对象
  * @author john
  * @version 1.1
  */
-
 @Data
 public class R<T> {
 

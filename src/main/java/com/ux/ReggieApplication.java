@@ -10,7 +10,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * @author john
  * @version 1.1
  */
-
 @Slf4j
 @SpringBootApplication
 @ServletComponentScan
