@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.ux.common.BaseContext;
 import com.ux.common.R;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.*;
@@ -35,7 +34,7 @@ public class LoginCheckFilter implements Filter {
 
         // 1、获取本次请求的URI
         String requestURI = request.getRequestURI();
-        log.info("拦截到请求,{}",requestURI);
+        // log.info("拦截到请求,{}",requestURI);
 
         // 不需要处理的请求路径，其中backend目录下都是静态资源，我们的核心是拦截页面通过ajax请求的动态数据。
         // 如果只是配置/backend/**这种通配符是无法拦截到 /backend/index.html 这种路径的，所以要使用路径匹配器
@@ -51,7 +50,7 @@ public class LoginCheckFilter implements Filter {
 
         // 3、如果不需要处理，则直接放行
         if (check){
-            log.info("本次请求不需要处理,{}",requestURI);
+            // log.info("本次请求不需要处理,{}",requestURI);
             chain.doFilter(request,response);
             return; // 如果匹配上直接放行了，那么后边的代码也没有必要再执行了，直接结束整个方法
         }

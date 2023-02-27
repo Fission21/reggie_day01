@@ -14,13 +14,12 @@ import java.sql.SQLIntegrityConstraintViolationException;
  * @author john
  * @version 1.1
  */
-
 @Slf4j
 @ResponseBody
 @ControllerAdvice(annotations = {RestController.class, Controller.class})
 public class GlobalExceptionHandler {
     /**
-     * 异常处理方法
+     * 新增管理重名问题
      * @return
      */
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
@@ -35,5 +34,15 @@ public class GlobalExceptionHandler {
             return R.error(msg);
         }
         return R.error("未知错误");
+    }
+
+    /**
+     * 菜品，套餐关联异常处理
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(CustomException.class)
+    public R<String> exceptionHandler(CustomException exception){
+        return R.error(exception.getMessage());
     }
 }
